@@ -34,11 +34,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_13
-        targetCompatibility = JavaVersion.VERSION_13
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -71,19 +71,23 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    implementation("androidx.compose.material:material:1.5.1")
 
-    //hilt
+    //Navigation
+    val navVersion = "2.7.2"
+    implementation("androidx.navigation:navigation-compose:$navVersion")
+    implementation ("androidx.navigation:navigation-ui-ktx:$navVersion")
+
+    //Hilt
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-compiler:2.44")
 
-    // Navigation
-    implementation("androidx.navigation:navigation-compose:2.7.0")
-
     //Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.5.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.5.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
 
-   //Room
+    //Room
     val roomVersion = "2.5.2"
     implementation("androidx.room:room-runtime:$roomVersion")
 
